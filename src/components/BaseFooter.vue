@@ -165,6 +165,7 @@ export default {
             border: .125rem solid var(--primary-color);
             background-color: transparent;
             color: #fff;
+            cursor: pointer;
         }
     }
 
@@ -180,6 +181,7 @@ export default {
 
         & img {
             margin-right: 0.9375rem;
+            cursor: pointer;
         }
     }
 }

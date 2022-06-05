@@ -4,18 +4,11 @@
       <div class="header__logo">
           <img src="../assets/img/dc-logo.png">
       </div>
-      <nav class="header__nav">
+      <nav class="header__nav" >
         <ul>
-          <li><a href="#">link</a></li>
-          <li><a href="#">link</a></li>
-          <li><a href="#">link</a></li>
-          <li><a href="#">link</a></li>
-          <li><a href="#">link</a></li>
-          <li><a href="#">link</a></li>
-          <li><a href="#">link</a></li>
-          <li><a href="#">link</a></li>
-          <li><a href="#">link</a></li>
-          <li><a href="#">link</a></li>
+          <li v-for="(link, index) in nav" :key="index" :class="{active : link.isActive}" @click="active(index)">
+            <a href="#">{{link.text}}</a>
+          </li>
         </ul>
       </nav>
   </header>
@@ -24,9 +17,72 @@
 
 <script>
 export default {
-  name: 'BaseHeader',
-
-}
+        name: 'BaseHeader',
+        data() {
+            return {
+                nav: [
+                    {
+                        text: "Characters",
+                        href: "#",
+                        isActive: false,
+                    },
+                    {
+                        text: "Comics",
+                        href: "#",
+                        isActive: true,
+                    },
+                    {
+                        text: "Movie",
+                        href: "#",
+                        isActive: false,
+                    },
+                    {
+                        text: "Tv",
+                        href: "#",
+                        isActive: false,
+                    },
+                    {
+                        text: "Games",
+                        href: "#",
+                        isActive: false,
+                    },
+                    {
+                        text: "Collectibles",
+                        href: "#",
+                        isActive: false,
+                    },
+                    {
+                        text: "Videos",
+                        href: "#",
+                        isActive: false,
+                    },
+                    {
+                        text: "Fans",
+                        href: "#",
+                        isActive: false,
+                    },
+                    {
+                        text: "News",
+                        href: "#",
+                        isActive: false,
+                    },
+                    {
+                        text: "Shop",
+                        href: "#",
+                        isActive: false,
+                    },
+                ],
+            }
+        },
+      methods: {
+        active(index) {
+          this.nav.forEach(link => {
+            link.isActive = false;
+          });
+          this.nav[index].isActive = !this.nav[index].isActive;
+        }
+      }
+    }
 </script>
 
 <style lang="scss" scoped>
@@ -53,7 +109,11 @@ export default {
             border-color: var(--primary-color);
           }
         }
+
+      .active a {
+        color: var(--primary-color);
+        border-color: var(--primary-color);
+      }
     }
-   
   }
 </style>
